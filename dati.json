@@ -1,8 +1,1 @@
-[
-    "Analisi",
-    "Progettazione",
-    "Proof of concept",
-    "Riunione",
-    "Debugging",
-    "Deploy"
-]
+[{"text":"Analisi","done":true},{"text":"Progettazione","done":true},{"text":"Sviluppo","done":false},{"text":"Riunione","done":false},{"text":"Debugging","done":false},{"text":"Deploy","done":false},{"text":"Manutenzione","done":false}]

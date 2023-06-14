@@ -1,4 +1,6 @@
 <?php
+// include "debug.php";
+
 //impostiamo l'header che avvisa del contenuto json
 header('Content-Type: application/json');
 
@@ -18,18 +20,45 @@ $todoListDati = json_decode($todoList, true);
 
 if( isset($_POST['newTask']) ) {
 
-    $todoListDati[] = $_POST['newTask'];
+    $nuovaTask = [
+        'text' => $_POST['newTask'],
+        'done' => false
+    ];
+
+    $todoListDati[] = $nuovaTask;
+
+    file_put_contents("dati.json", json_encode($todoListDati) );
+
+} else if( isset($_POST['toggleIndex']) ) {
+    
+    $indice = $_POST['toggleIndex'];
+
+    $todoListDati[$indice]['done'] = !$todoListDati[$indice]['done'];
+
+    file_put_contents("dati.json", json_encode($todoListDati) );
+
+} else if( isset($_POST['editText']) ) {
+    
+    $nuovoTesto = $_POST['editText'];
+
+    $todoListDati[$indice]['text'] = $nuovoTesto;
+
     file_put_contents("dati.json", json_encode($todoListDati) );
 
 } else if( isset($_POST['deleteAll']) ) {
 
     $todoListDati = [];
+
     file_put_contents("dati.json", json_encode($todoListDati) );
 
 } else if( isset($_POST['deleteIndex'] )) {
 
     $indice = $_POST['deleteIndex'];
-    $todoListDati[$indice] = "ELIMINATO";
+
+    // debugga("Array iniziale", $todoListDati);
+
+    array_splice($todoListDati, $indice, 1);
+
     file_put_contents("dati.json", json_encode($todoListDati) );
 
 }

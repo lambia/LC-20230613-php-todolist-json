@@ -1,7 +1,7 @@
 const { createApp } = Vue;
 
 createApp({
-    
+
     data() {
         return {
             apiUrl: "api.php",
@@ -13,6 +13,12 @@ createApp({
         this.getDati();
     },
     methods: {
+        getTextClass(item) {
+            let classObj = {
+                'text-decoration-line-through': item.done
+            };
+            return classObj;
+        },
         getDati() {
             //Faccio una chiamata ad un API specificata nel data
             axios.get(this.apiUrl).then((response) => {
@@ -20,15 +26,20 @@ createApp({
                 this.todoList = response.data;
             });
         },
+        addNewTask() {
+            const data = { newTask: this.newTask };
+
+            this.sendData(data);
+        },
+        toggleStatus(i) {
+            const data = { toggleIndex: i };
+
+            this.sendData(data);
+        },
         deleteItem(i) {
             console.log("Hai cliccato sull'item", i);
 
             const data = { deleteIndex: i };
-
-            this.sendData(data);
-        },
-        addNewTask() {
-            const data = { newTask: this.newTask };
 
             this.sendData(data);
         },

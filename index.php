@@ -9,8 +9,9 @@
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -24,7 +25,13 @@
                     <h1>ToDo List</h1>
 
                     <ul v-if="todoList.length">
-                        <li v-for="(item, i) in todoList" @click="deleteItem(i)">{{ item }}</li>
+                        <li v-for="(item, i) in todoList" class="my-2">
+                            <span @click="deleteItem(i)" class="badge bg-danger p-2 me-2">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                            <span @click="toggleStatus(i)" :class="getTextClass(item)">{{ item.text }}</span>
+                            <input type="text" v-model="todoList[i].text" placeholder="valroe" >
+                        </li>
                     </ul>
                     <h2 v-else>Nessun dato da visualizzare</h2>
 
@@ -42,6 +49,14 @@
         </div>
     </div>
     <script src="./main.js"></script>
+
+    <!-- Cosa succede se invece del tag script usassimo il tag div? -->
+    <script>
+    <?php
+        $prova = 123;
+        echo "console.log('Valore stampato da PHP: ', $prova);"
+    ?>
+    </script>
 
 </body>
 
