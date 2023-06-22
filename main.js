@@ -4,7 +4,8 @@ createApp({
 
     data() {
         return {
-            apiUrl: "api.php",
+            // apiUrl: "api.php",
+            apiUrl: "api-v2.php",
             todoList: [],
             newTask: ""
         }
@@ -26,25 +27,27 @@ createApp({
                 this.todoList = response.data;
             });
         },
-        addNewTask() {
-            const data = { newTask: this.newTask };
 
+
+        addNewTask() {
+            const data = { action: "create", text: this.newTask };
+            this.sendData(data);
+        },
+        editTask(i, $event) {
+            const data = { action: "update", index: i, text: $event.target.value };
             this.sendData(data);
         },
         toggleStatus(i) {
-            const data = { toggleIndex: i };
-
+            const data = { action: "toggle", index: i };
             this.sendData(data);
         },
         deleteItem(i) {
-            console.log("Hai cliccato sull'item", i);
-
-            const data = { deleteIndex: i };
-
+            const data = { action: "delete", index: i };
             this.sendData(data);
         },
+
         deleteAllTasks() {
-            const data = { deleteAll: true };
+            const data = { action: "delete-all" };
 
             this.sendData(data);
         },

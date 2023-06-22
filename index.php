@@ -30,7 +30,7 @@
                                 <i class="fa fa-trash"></i>
                             </span>
                             <span @click="toggleStatus(i)" :class="getTextClass(item)">{{ item.text }}</span>
-                            <input type="text" v-model="todoList[i].text" placeholder="valroe" >
+                            <input @change="editTask(i, $event)" type="text" v-model="todoList[i].text" placeholder="Inserisci attività" >
                         </li>
                     </ul>
                     <h2 v-else>Nessun dato da visualizzare</h2>

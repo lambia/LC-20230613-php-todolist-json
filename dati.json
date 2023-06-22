@@ -1,1 +1,30 @@
-[{"text":"Analisi","done":true},{"text":"Progettazione","done":true},{"text":"Sviluppo","done":false},{"text":"Riunione","done":false},{"text":"Debugging","done":false},{"text":"Deploy","done":false},{"text":"Manutenzione","done":false}]
+[
+	{
+		"text": "Studio di fattibilità",
+		"done": true
+	},
+	{
+		"text": "Pianificazione",
+		"done": true
+	},
+	{
+		"text": "Analisi",
+		"done": true
+	},
+	{
+		"text": "Progettazione",
+		"done": false
+	},
+	{
+		"text": "Sviluppo",
+		"done": false
+	},
+	{
+		"text": "Test",
+		"done": false
+	},
+	{
+		"text": "Manutenzione",
+		"done": false
+	}
+]
